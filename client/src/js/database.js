@@ -18,16 +18,16 @@ console.error('putDb not implemented');
 console.log('Post to the database');
 
   // Create a connection to the database database and version we want to use.
-  const contactDb = await openDB('contact', 1);
+  const contactDb = await openDB('jate' );
 
   // Create a new transaction and specify the database and data privileges.
-  const tx = contactDb.transaction('contact', 'readwrite');
+  const tx = contactDb.transaction('jate', 'readwrite');
 
   // Open up the desired object store.
-  const store = tx.objectStore('contact');
+  const store = tx.objectStore('jate');
 
   // Use the .add() method on the store and pass in the content.
-  const request = store.add({ name: name, home_phone: home, cell_phone: cell, email: email });
+  const request = store.put(content, 'text');
 
   // Get confirmation of the request.
   const result = await request;
@@ -40,16 +40,16 @@ console.error('getDb not implemented');
 console.log('GET from the database');
 
 // Create a connection to the database database and version we want to use.
-const contactDb = await openDB('contact', 1);
+const contactDb = await openDB('jate');
 
 // Create a new transaction and specify the database and data privileges.
-const tx = contactDb.transaction('contact', 'readonly');
+const tx = contactDb.transaction('jate', 'readonly');
 
 // Open up the desired object store.
-const store = tx.objectStore('contact');
+const store = tx.objectStore('jate');
 
 // Use the .getAll() method to get all data in the database.
-const request = store.getAll();
+const request = store.get('text');
 
 // Get confirmation of the request.
 const result = await request;
